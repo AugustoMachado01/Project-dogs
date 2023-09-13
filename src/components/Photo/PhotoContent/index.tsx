@@ -8,9 +8,10 @@ import {
   Link,
   Views,
   Title,
-  Ul,
+  Attributes,
 } from "./styles";
 import { PhotoCommentProps } from "../../../Hooks/useFetch";
+import { PhotoComment } from "../PhotoComment";
 
 interface DataItemProps {
   data: PhotoCommentProps;
@@ -18,7 +19,6 @@ interface DataItemProps {
 
 export function PhotoContent({ data }: DataItemProps) {
   const { photo, comments } = data;
-  console.log(photo);
 
   return (
     <Container>
@@ -28,17 +28,17 @@ export function PhotoContent({ data }: DataItemProps) {
       <Details>
         <Paragraph>
           <Link to={`/perfil/${photo.author}`}>@{photo.author}</Link>
-          <Views>@{photo.acessos}</Views>
-          <Title>
-            <Link to={`/foto/${photo.id}`}>{photo.title}</Link>
-          </Title>
-          <Ul>
-            <li>{photo.peso} kg</li>
-            <li>{photo.idade} anos</li>
-          </Ul>
+          <Views>{photo.acessos}</Views>
         </Paragraph>
+        <Title className="title">
+          <Link to={`/foto/${photo.id}`}>{photo.title}</Link>
+        </Title>
+        <Attributes>
+          <li>{photo.peso} kg</li>
+          <li>{photo.idade} anos</li>
+        </Attributes>
+        <PhotoComment id={photo.id} comments={comments} />
       </Details>
-      <PhotoComment id={photo.id} comments={ } />
     </Container>
   );
 }

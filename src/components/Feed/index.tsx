@@ -9,7 +9,9 @@ export function Feed() {
   const [modalPhoto, setModalPhoto] = React.useState<DataProps | null>(null);
   return (
     <Container>
-      {modalPhoto && <FeedModal photo={modalPhoto} />}
+      {modalPhoto && (
+        <FeedModal photo={modalPhoto} setModalPhoto={setModalPhoto} />
+      )}
       <FeedPhotos setModalPhoto={setModalPhoto} />
     </Container>
   );

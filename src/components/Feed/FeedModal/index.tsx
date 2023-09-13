@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal } from "./styles";
-import { PhotoCommentProps, useFetch } from "../../../Hooks/useFetch";
+import { useFetch } from "../../../Hooks/useFetch";
 import { PHOTO_GET } from "../../../Hooks/api";
 
 import { DataProps } from "../FeedPhotos";
@@ -10,9 +10,10 @@ import { PhotoContent } from "../../Photo/PhotoContent";
 
 interface ModalPhotoProps {
   photo: DataProps;
+  setModalPhoto: (photo: DataProps | null) => void;
 }
 
-export function FeedModal({ photo }: ModalPhotoProps) {
+export function FeedModal({ photo, setModalPhoto }: ModalPhotoProps) {
   const { data, loading, error, request } = useFetch();
 
   React.useEffect(() => {
@@ -23,8 +24,14 @@ export function FeedModal({ photo }: ModalPhotoProps) {
     fetchPModal();
   }, [photo, request]);
 
+  function handleOutsideClick(
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) {
+    if (event.target === event.currentTarget) setModalPhoto(null);
+  }
+
   return (
-    <Modal>
+    <Modal onClick={handleOutsideClick}>
       {error && <ErrorComponent error={error} />}
       {loading && <Loading />}
 

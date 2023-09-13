@@ -23,7 +23,7 @@ export interface ApiResponse<T> {
   json: T;
 }
 
-interface CommentPhoto {
+export interface CommentPhoto {
   comment_ID: string;
   comment_agent: string;
   comment_approved: string;
