@@ -5,7 +5,7 @@ import { PHOTO_GET } from "../../../Hooks/api";
 
 import { DataProps } from "../FeedPhotos";
 import { ErrorComponent } from "../../Helper";
-import { Loading } from "../../Helper/Loading";
+import { Loading } from "../../Helper/Loading/index";
 import { PhotoContent } from "../../Photo/PhotoContent";
 
 interface ModalPhotoProps {

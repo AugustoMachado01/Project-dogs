@@ -37,10 +37,6 @@ export const Container = styled.div`
 
 export const Content = styled.div``;
 
-export const Img = styled.img`
-  grid-row: 1/4;
-`;
-
 export const Details = styled.div`
   padding: 2rem 2rem 0 2rem;
 `;

@@ -11,6 +11,10 @@ interface PhotoGetProps {
   user: number;
 }
 
+interface CommentProps {
+  comment: string;
+}
+
 export function TOKEN_POST(username: string, password: string) {
   const body: TokenPostBody = {
     username,
@@ -100,6 +104,35 @@ export function PHOTO_GET(id: string) {
     options: {
       method: "GET",
       cache: "no-store" as RequestCache,
+    },
+  };
+}
+
+export function COMMENT_POST(id: number, comment: string) {
+  const body: CommentProps = {
+    comment,
+  };
+  return {
+    url: `${API_URL}/api/comment/${id}`,
+    options: {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + window.localStorage.getItem("token"),
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}
+
+export function PHOTO_DELETE(id: number) {
+  return {
+    url: `${API_URL}/api/photo/${id}`,
+    options: {
+      method: "DELETE",
+      headers: {
+        Authorization: "Bearer " + window.localStorage.getItem("token"),
+      },
     },
   };
 }

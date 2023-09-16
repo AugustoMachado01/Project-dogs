@@ -2,6 +2,7 @@ import React from "react";
 import { Li, Span } from "./styles";
 
 import { DataProps } from "../FeedPhotos";
+import { Image } from "../../Helper/Image";
 
 interface DataItem {
   photo: DataProps;
@@ -14,7 +15,7 @@ export function FeedPhotosItem({ photo, setModalPhoto }: DataItem) {
   }
   return (
     <Li onClick={handleClick}>
-      <img src={photo.src} alt={photo.title} />
+      <Image src={photo.src} alt={photo.title} />
       <Span>{photo.acessos}</Span>
     </Li>
   );

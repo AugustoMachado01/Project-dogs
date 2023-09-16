@@ -7,7 +7,7 @@ export const Li = styled.div`
   overflow: hidden;
   cursor: pointer;
 
-  img {
+  div {
     grid-area: 1/1;
   }
 

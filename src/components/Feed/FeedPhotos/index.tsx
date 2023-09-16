@@ -4,7 +4,7 @@ import { FeedPhotosItem } from "../FeedPhotosItem";
 import { useFetch } from "../../../Hooks/useFetch";
 import { PHOTOS_GET } from "../../../Hooks/api";
 import { ErrorComponent } from "../../Helper";
-import { Loading } from "../../Helper/Loading";
+import { Loading } from "../../Helper/Loading/index";
 
 export interface DataProps {
   acessos: string;

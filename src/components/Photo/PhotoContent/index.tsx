@@ -2,7 +2,6 @@ import React from "react";
 import {
   Container,
   Content,
-  Img,
   Details,
   Paragraph,
   Link,
@@ -12,22 +11,31 @@ import {
 } from "./styles";
 import { PhotoCommentProps } from "../../../Hooks/useFetch";
 import { PhotoComment } from "../PhotoComment";
+import { UserContext } from "../../../UserContext";
+import { PhotoDelete } from "../PhotoDelete";
+import { Image } from "../../Helper/Image";
 
 interface DataItemProps {
   data: PhotoCommentProps;
 }
 
 export function PhotoContent({ data }: DataItemProps) {
+  const user = React.useContext(UserContext);
   const { photo, comments } = data;
 
   return (
     <Container>
       <Content>
-        <Img src={photo.src} alt={photo.title} />
+        <Image src={photo.src} alt={photo.title} />
       </Content>
       <Details>
         <Paragraph>
-          <Link to={`/perfil/${photo.author}`}>@{photo.author}</Link>
+          {user?.data && user.data.username === photo.author ? (
+            <PhotoDelete id={photo.id} />
+          ) : (
+            <Link to={`/perfil/${photo.author}`}>@{photo.author}</Link>
+          )}
+
           <Views>{photo.acessos}</Views>
         </Paragraph>
         <Title className="title">
